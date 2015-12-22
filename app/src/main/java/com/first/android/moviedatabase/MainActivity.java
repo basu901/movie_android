@@ -1,6 +1,9 @@
 package com.first.android.moviedatabase;
 
+<<<<<<< HEAD
 import android.content.Intent;
+=======
+>>>>>>> upstream/master
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
@@ -11,9 +14,15 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+<<<<<<< HEAD
         setContentView(R.layout.activity_main);
         if(savedInstanceState==null){
             getSupportFragmentManager().beginTransaction().add(R.id.container,new MainActivityFragment()).commit();
+=======
+        setContentView(R.layout.fragment_main);
+        if(savedInstanceState==null){
+            getSupportFragmentManager().beginTransaction().add(R.id.fragment,new MainActivityFragment()).commit();
+>>>>>>> upstream/master
         }
     }
 
@@ -34,7 +43,10 @@ public class MainActivity extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+<<<<<<< HEAD
             startActivity(new Intent(this,SettingsActivity.class));
+=======
+>>>>>>> upstream/master
             return true;
         }
 

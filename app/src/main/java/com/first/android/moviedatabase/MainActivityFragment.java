@@ -1,15 +1,23 @@
 package com.first.android.moviedatabase;
 
+<<<<<<< HEAD
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
+=======
+import android.content.Context;
+import android.content.Intent;
+>>>>>>> upstream/master
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
+<<<<<<< HEAD
 import android.preference.PreferenceManager;
+=======
+>>>>>>> upstream/master
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -35,8 +43,11 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
+<<<<<<< HEAD
 import java.util.Collections;
 import java.util.Comparator;
+=======
+>>>>>>> upstream/master
 import java.util.Iterator;
 
 /**
@@ -55,10 +66,16 @@ public class MainActivityFragment extends Fragment {
             host+"Blood+Diamond"+details,
             host+"12+Angry+Men"+details,
             host+"300"+details,
+<<<<<<< HEAD
             host+"Hot+Fuzz"+details,
             host+"Carnage"+details,
             host+"Up"+details,
     };
+=======
+            host+"Up"+details,
+            host+"The+Lion+King"+details,
+            host+"Carnage"+details};
+>>>>>>> upstream/master
     ArrayList<Movie> myMovies=new ArrayList<>();
 
 
@@ -73,6 +90,10 @@ public class MainActivityFragment extends Fragment {
     }
 
     public void onCreateOptionsMenu(Menu menu,MenuInflater inflater){
+<<<<<<< HEAD
+=======
+        inflater.inflate(R.menu.moviefragment, menu);
+>>>>>>> upstream/master
 
     }
 
@@ -83,8 +104,15 @@ public class MainActivityFragment extends Fragment {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
+<<<<<<< HEAD
         if (id == R.id.action_settings) {
            return true;
+=======
+        if (id == R.id.action_refresh) {
+            //FetchMovie fetchmovie= new FetchMovie();
+            //fetchmovie.execute();
+            return true;
+>>>>>>> upstream/master
         }
 
         return super.onOptionsItemSelected(item);
@@ -93,6 +121,7 @@ public class MainActivityFragment extends Fragment {
 
     public void onStart(){
         super.onStart();
+<<<<<<< HEAD
         FetchMovie fetchMovie=new FetchMovie();
         fetchMovie.execute();
     }
@@ -129,6 +158,21 @@ public class MainActivityFragment extends Fragment {
         GridView gridView=(GridView)getActivity().findViewById(R.id.list_grid);
         gridView.setAdapter(adapter);
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+=======
+        updateMovie();
+    }
+
+    public void updateMovie(){
+        FetchMovie fetchMovie=new FetchMovie();
+        fetchMovie.execute();
+    }
+
+    public void populateGridView(){
+        ArrayAdapter<Movie> adapter=new MyMovieTestAdapter();
+        GridView gridView=(GridView)getActivity().findViewById(R.id.list_grid);
+        gridView.setAdapter(adapter);
+       gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+>>>>>>> upstream/master
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
@@ -136,14 +180,20 @@ public class MainActivityFragment extends Fragment {
                 Movie currentMovie=(Movie)testAdapter.getItem(position);
                 Intent detail=new Intent(getActivity(),DetailActivity.class);
                 Bundle extras=new Bundle();
+<<<<<<< HEAD
                 extras.putString("poster",currentMovie.getPoster());
+=======
+>>>>>>> upstream/master
                 extras.putString("director",currentMovie.getDirector());
                 extras.putString("released",currentMovie.getRelease());
                 extras.putString("genre",currentMovie.getGenre());
                 extras.putString("runtime",currentMovie.getRuntime());
                 extras.putString("plot",currentMovie.getPlot());
+<<<<<<< HEAD
                 extras.putString("votes",currentMovie.getVotes());
                 extras.putFloat("rating",currentMovie.getRating());
+=======
+>>>>>>> upstream/master
                 detail.putExtras(extras);
                 startActivity(detail);
             }
@@ -164,6 +214,7 @@ public class MainActivityFragment extends Fragment {
             ImageView imageView;
             if (convertView == null) {
                 item = getActivity().getLayoutInflater().inflate(R.layout.pop, parent, false);
+<<<<<<< HEAD
                 imageView = (ImageView) item.findViewById(R.id.pop_image);
 
             } else {
@@ -172,10 +223,21 @@ public class MainActivityFragment extends Fragment {
             final Movie currentMovie = movieData.get(position);
             Picasso.with(mContext).load(currentMovie.getPoster()).into(imageView);
             return imageView;
+=======
+                final Movie currentMovie = movieData.get(position);
+                imageView = (ImageView) item.findViewById(R.id.pop_image);
+                //imageView.setLayoutParams(new GridView.LayoutParams(150,150));
+                Picasso.with(mContext).load(currentMovie.getPoster()).into(imageView);
+                return item;
+            } else {
+                return convertView;
+            }
+>>>>>>> upstream/master
         }
 
     }
 
+<<<<<<< HEAD
     public void onConfigurationChanged(Configuration config){
         super.onConfigurationChanged(config);
         getActivity().setContentView(R.layout.fragment_main);
@@ -183,11 +245,29 @@ public class MainActivityFragment extends Fragment {
         populateGridView();
     }
 
+=======
+>>>>>>> upstream/master
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_main, container, false);
+<<<<<<< HEAD
+=======
+        //String[] data={"something","something else","something","something else","something","something else"};
+       /* Iterator<Movie> itr=myMovies.iterator();
+        while(itr.hasNext()){
+            Movie element=itr.next();
+            Log.v(MainActivityFragment.class.getSimpleName(),"Title:"+element.getTitle());
+        }
+        ArrayAdapter<Movie> adapter=new MovieAdapter(getActivity(),R.layout.pop,myMovies);
+        GridView gridView=(GridView)rootView.findViewById(R.id.list_grid);
+        gridView.setAdapter(adapter);*/
+        //List<String> dataShow =new ArrayList<String>(Arrays.asList(data));
+        //ArrayAdapter<String> mdataAdapter =new ArrayAdapter<String>(getActivity(),R.layout.pop,R.id.pop_image,dataShow);
+        //GridView listview=(GridView)rootView.findViewById(R.id.list_grid);
+        //listview.setAdapter(mdataAdapter);
+>>>>>>> upstream/master
         return rootView;
 
     }
@@ -195,12 +275,15 @@ public class MainActivityFragment extends Fragment {
 
     public class FetchMovie extends AsyncTask<String,Void,Void> {
         private final String LOG_TAG=MainActivityFragment.class.getSimpleName();
+<<<<<<< HEAD
         ProgressDialog progress=new ProgressDialog(getActivity());
         protected void onPreExecute(){
             progress.setTitle("Loading");
             progress.setMessage("Downloading Images");
             progress.show();
         }
+=======
+>>>>>>> upstream/master
 
         protected Void doInBackground(String...params){
             HttpURLConnection urlConnection = null;
@@ -277,8 +360,12 @@ public class MainActivityFragment extends Fragment {
         }
 
         protected void onPostExecute(Void result){
+<<<<<<< HEAD
             progress.dismiss();
             updateMovie();
+=======
+            populateGridView();
+>>>>>>> upstream/master
             Log.v("Fetch Movie class:","Finished Executing AsyncTask");
         }
     }
